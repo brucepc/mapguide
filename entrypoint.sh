@@ -7,7 +7,7 @@ export MENTOR_DICTIONARY_PATH=${MG_PATH}/share/gis/coordsys
 export LD_LIBRARY_PATH=/usr/local/fdo-${FDOVER}/lib:"$LD_LIBRARY_PATH"
 export NLSPATH=/usr/local/fdo-${FDOVER}/nls/%N:"$NLSPATH"
 mkdir -p /var/lock/mgserver
-ln -sf ${MG_PATH}/server/bin/mapguidectl /usr/local/bin/mapguidectl
+#ln -sf ${MG_PATH}/server/bin/mapguidectl /usr/local/bin/mapguidectl
 
 SLEEPTIME=1
 NO_APACHE=0
@@ -28,8 +28,9 @@ start_tomcat(){
 
 start_mg(){
   echo "Starting mgserver..."
-  ${MG_PATH}/server/bin/mapguidectl start
-  $MG_PATH/server/bin/mapguidectl status | perl -pe 's/\D//g' | tee $MG_PIDFILE
+  cd ${MG_PATH}/server/bin
+  ./mgserver run &
+  echo $! > $MG_PIDFILE
 }
 
 stop_all(){
