@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<FeatureProviderRegistry>
+  <FeatureProvider>
+    <Name>OSGeo.ArcSDE.${FDOVER_MAJOR_MINOR}</Name>
+    <DisplayName>OSGeo FDO Provider for ArcSDE</DisplayName>
+    <Description>Read/write access to an ESRI ArcSDE-based data store, using Oracle and SQL Server</Description>
+    <IsManaged>False</IsManaged>
+    <Version>${FDOVER_MAJOR_MINOR_REV}.0</Version>
+    <FeatureDataObjectsVersion>${FDOVER_MAJOR_MINOR_REV}.0</FeatureDataObjectsVersion>
+    <LibraryPath>libArcSDEProvider.so</LibraryPath>
+  </FeatureProvider>
+  <FeatureProvider>
+    <Name>OSGeo.Gdal.${FDOVER_MAJOR_MINOR}</Name>
+    <DisplayName>OSGeo FDO Provider for GDAL</DisplayName>
+    <Description>FDO Provider for GDAL</Description>
+    <IsManaged>False</IsManaged>
+    <Version>${FDOVER_MAJOR_MINOR_REV}.0</Version>
+    <FeatureDataObjectsVersion>${FDOVER_MAJOR_MINOR_REV}.0</FeatureDataObjectsVersion>
+    <LibraryPath>libGRFPProvider.so</LibraryPath>
+  </FeatureProvider>
+  <FeatureProvider>
+    <Name>OSGeo.KingOracle.${FDOVER_MAJOR_MINOR}</Name>
+    <DisplayName>OSGeo FDO Provider for Oracle</DisplayName>
+    <Description>Read/write access to spatial and attribute data in Oracle Spatial</Description>
+    <IsManaged>False</IsManaged>
+    <Version>${FDOVER_MAJOR_MINOR_REV}.0</Version>
+    <FeatureDataObjectsVersion>${FDOVER_MAJOR_MINOR_REV}.0</FeatureDataObjectsVersion>
+    <LibraryPath>libKingOracleProvider.so</LibraryPath>
+  </FeatureProvider>
+<FeatureProvider>
+    <Name>OSGeo.ODBC.${FDOVER_MAJOR_MINOR}</Name>
+    <DisplayName>OSGeo FDO Provider for ODBC</DisplayName>
+    <Description>FDO Provider for ODBC</Description>
+    <IsManaged>False</IsManaged>
+    <Version>${FDOVER_MAJOR_MINOR_REV}.0</Version>
+    <FeatureDataObjectsVersion>${FDOVER_MAJOR_MINOR_REV}.0</FeatureDataObjectsVersion>
+    <LibraryPath>libFdoODBC.so</LibraryPath>
+  </FeatureProvider>
+  <FeatureProvider>
+    <Name>OSGeo.PostgreSQL.${FDOVER_MAJOR_MINOR}</Name>
+    <DisplayName>OSGeo FDO Provider for PostgreSQL</DisplayName>
+    <Description>Read/write access to PostgreSQL/PostGIS-based data store. Supports spatial data types and spatial query operations</Description>
+    <IsManaged>False</IsManaged>
+    <Version>${FDOVER_MAJOR_MINOR_REV}.0</Version>
+    <FeatureDataObjectsVersion>${FDOVER_MAJOR_MINOR_REV}.0</FeatureDataObjectsVersion>
+    <LibraryPath>libFdoPostgreSQL.so</LibraryPath>
+  </FeatureProvider>
+
+ <FeatureProvider>
+    <Name>OSGeo.MySQL.${FDOVER_MAJOR_MINOR}</Name>
+    <DisplayName>OSGeo FDO Provider for MySQL</DisplayName>
+    <Description>FDO Provider for MySQL</Description>
+    <IsManaged>False</IsManaged>
+    <Version>${FDOVER_MAJOR_MINOR_REV}.0</Version>
+   <FeatureDataObjectsVersion>${FDOVER_MAJOR_MINOR_REV}.0</FeatureDataObjectsVersion>
+   <LibraryPath>libFdoMySQL.so</LibraryPath>
+  </FeatureProvider>
+ <FeatureProvider>
+    <Name>OSGeo.OGR.${FDOVER_MAJOR_MINOR}</Name>
+    <DisplayName>OSGeo FDO Provider for OGR</DisplayName>
+    <Description>FDO Access to OGR Data Sources</Description>
+    <IsManaged>False</IsManaged>
+    <Version>${FDOVER_MAJOR_MINOR_REV}.0</Version>
+    <FeatureDataObjectsVersion>${FDOVER_MAJOR_MINOR_REV}.0</FeatureDataObjectsVersion>
+    <LibraryPath>libOGRProvider.so</LibraryPath>
+  </FeatureProvider>
+<FeatureProvider>
+    <Name>OSGeo.SDF.${FDOVER_MAJOR_MINOR}</Name>
+    <DisplayName>OSGeo FDO Provider for SDF</DisplayName>
+    <Description>Read/write access to Autodesk's spatial database format, a file-based geodatabase that supports multiple features/attributes, spatial indexing and file-locking</Description>
+    <IsManaged>False</IsManaged>
+    <Version>${FDOVER_MAJOR_MINOR_REV}.0</Version>
+    <FeatureDataObjectsVersion>${FDOVER_MAJOR_MINOR_REV}.0</FeatureDataObjectsVersion>
+    <LibraryPath>libSDFProvider.so</LibraryPath>
+  </FeatureProvider>
+  <FeatureProvider>
+    <Name>OSGeo.SHP.${FDOVER_MAJOR_MINOR}</Name>
+    <DisplayName>OSGeo FDO Provider for SHP</DisplayName>
+    <Description>Read/write access to spatial and attribute data in an ESRI SHP file</Description>
+    <IsManaged>False</IsManaged>
+    <Version>${FDOVER_MAJOR_MINOR_REV}.0</Version>
+    <FeatureDataObjectsVersion>${FDOVER_MAJOR_MINOR_REV}.0</FeatureDataObjectsVersion>
+    <LibraryPath>libSHPProvider.so</LibraryPath>
+  </FeatureProvider>
+  <FeatureProvider>
+    <Name>OSGeo.SQLite.${FDOVER_MAJOR_MINOR}</Name>
+    <DisplayName>OSGeo FDO Provider for SQLite</DisplayName>
+    <Description>Read/write access to feature data in a SQLite file</Description>
+    <IsManaged>False</IsManaged>
+    <Version>${FDOVER_MAJOR_MINOR_REV}.0</Version>
+    <FeatureDataObjectsVersion>${FDOVER_MAJOR_MINOR_REV}.0</FeatureDataObjectsVersion>
+    <LibraryPath>libSQLiteProvider.so</LibraryPath>
+  </FeatureProvider>
+<FeatureProvider>
+    <Name>OSGeo.WFS.${FDOVER_MAJOR_MINOR}</Name>
+    <DisplayName>OSGeo FDO Provider for WFS</DisplayName>
+    <Description>Read access to OGC WFS-based data store</Description>
+    <IsManaged>False</IsManaged>
+    <Version>${FDOVER_MAJOR_MINOR_REV}.0</Version>
+    <FeatureDataObjectsVersion>${FDOVER_MAJOR_MINOR_REV}.0</FeatureDataObjectsVersion>
+    <LibraryPath>libWFSProvider.so</LibraryPath>
+  </FeatureProvider>
+ <FeatureProvider>
+    <Name>OSGeo.WMS.${FDOVER_MAJOR_MINOR}</Name>
+    <DisplayName>OSGeo FDO Provider for WMS</DisplayName>
+    <Description>Read access to OGC WMS-based data store</Description>
+    <IsManaged>False</IsManaged>
+    <Version>${FDOVER_MAJOR_MINOR_REV}.0</Version>
+    <FeatureDataObjectsVersion>${FDOVER_MAJOR_MINOR_REV}.0</FeatureDataObjectsVersion>
+    <LibraryPath>libWMSProvider.so</LibraryPath>
+  </FeatureProvider>
+</FeatureProviderRegistry>
