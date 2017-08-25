@@ -14,7 +14,7 @@ How to use
 docker pull brucepc/mapguide:[version]
 docker run -ti -d brucepc/mapguide:[version]
 ```
-Entry points params:   
+Entrypoint params
 ===
 + --no-tomcat        ``doesn't start tomcat server``   
 + --no-apache        ``doesn't start the apache server``   
@@ -24,7 +24,7 @@ Entry points params:
 ```bash
 docker run -ti brucepc/mapguide --no-tomcat
 ```
-Exposed ports:
+Exposed ports
 ===
 + 8008 Apache server
 + 8009 Tomcat server
