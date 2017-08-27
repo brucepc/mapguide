@@ -29,3 +29,7 @@ Exposed ports
 + 8008 Apache server
 + 8009 Tomcat server
 
+Need help ???
+===
+
+ [![Join the chat at https://gitter.im/mapguide-container](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gitterHQ/gitter)
