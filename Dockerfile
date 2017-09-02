@@ -88,9 +88,10 @@ RUN ln -sf /dev/stdout ${MGLOG_PATH}/{Access,Admin,Authentication}.log; \
     ln -sf /dev/stderr ${MGAPACHE_LOG}/error_log
 
 
-ADD ./entrypoint.sh ./
-RUN chmod a+x entrypoint.sh
+COPY ./entrypoint.sh /
+RUN chmod a+x /entrypoint.sh; \
+    chmod a+rw ${MG_PATH}/webserverextensions/www/fusion/lib/tcpdf/cache/
 
 EXPOSE 2810 2811 2812 8008 8009
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
