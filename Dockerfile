@@ -56,7 +56,8 @@ RUN apt-get update && apt-get -f install -y;\
 
 WORKDIR ${MG_PATH}
 
-RUN chmod 777 webserverextensions/www/TempDir
+RUN chmod 777 webserverextensions/www/TempDir; \
+    chmod a+rw webserverextensions/www/fusion/lib/tcpdf/cache
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
