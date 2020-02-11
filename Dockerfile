@@ -1,23 +1,24 @@
 FROM ubuntu:14.04
 
-ENV TEMPDIR /tmp/build_mapguide
-ENV URL_HOST "http://download.osgeo.org"
+# This is where mginstallubuntu.sh downloads packages into
+ENV TEMPDIR /tmp/install_mapguide
+ENV URL_HOST "https://download.osgeo.org"
 ENV URL_RELPATH "/mapguide/releases"
 ENV FDOVER_MAJOR=4
 ENV FDOVER_MINOR=1
 ENV FDOVER_MAJOR_MINOR=${FDOVER_MAJOR}.${FDOVER_MINOR}
 ENV FDOVER_POINT=0
 ENV FDOVER_MAJOR_MINOR_REV=${FDOVER_MAJOR_MINOR}.${FDOVER_POINT}
-ENV FDOBUILD=7481
+ENV FDOBUILD=7814
 ENV FDOARCH=amd64
 ENV FDOVER=${FDOVER_MAJOR_MINOR_REV}-${FDOBUILD}_${FDOARCH}
 ENV MGVER_MAJOR=3
 ENV MGVER_MINOR=1
 ENV MGVER_MAJOR_MINOR=${MGVER_MAJOR}.${MGVER_MINOR}
-ENV MGVER_POINT=0
+ENV MGVER_POINT=2
 ENV MGVER_MAJOR_MINOR_REV=${MGVER_MAJOR_MINOR}.${MGVER_POINT}
 ENV MGRELEASELABEL=Final
-ENV MGBUILD=9064
+ENV MGBUILD=9484
 ENV MGARCH=amd64
 ENV MGVER=${MGVER_MAJOR_MINOR_REV}-${MGBUILD}_${MGARCH}
 ENV MG_PATH=/usr/local/mapguideopensource-${MGVER_MAJOR_MINOR_REV}
@@ -39,39 +40,17 @@ ENV DEFAULT_HTTPD_PORT 8008
 RUN mkdir -p ${TEMPDIR}
 WORKDIR ${TEMPDIR}
 
-RUN apt-get update && apt-get -y install openjdk-7-jre curl libxml2 libexpat1 libssl1.0.0 \
-    odbcinst unixodbc libcurl3 libxslt1.1 libmysqlclient18 libpq5;\
-    rm -rf /var/lib/apt/lists/* ; \
-    rm -rf /var/lib/apt/archives/*
-
-# DOWNLOADING PACKAGES
-RUN curl --progress-bar -L \
-    ${URL}/fdo-{core,sdf,shp,sqlite,gdal,ogr,kingoracle,rdbms,wfs,wms}_${FDOVER}.deb \
-    -o "${TEMPDIR}/fdo-#1_${FDOVER}.deb"
-
-RUN curl --progress-bar -L \
-    ${URL}/mapguideopensource-{platformbase,coordsys-lite,common,server,webextensions,httpd}_${MGVER}.deb \
-    -o "${TEMPDIR}/mapguideopensource-#1_${MGVER}.deb"
-
-# INSTALLING FDO PACKAGES
-RUN dpkg -E -G --install fdo-core_${FDOVER}.deb \
-    fdo-sdf_${FDOVER}.deb \
-    fdo-shp_${FDOVER}.deb \
-    fdo-sqlite_${FDOVER}.deb \
-    fdo-gdal_${FDOVER}.deb \
-    fdo-ogr_${FDOVER}.deb \
-    fdo-kingoracle_${FDOVER}.deb \
-    fdo-rdbms_${FDOVER}.deb \
-    fdo-wfs_${FDOVER}.deb \
-    fdo-wms_${FDOVER}.deb
-
-#INSTALLING MAPGUIDE PACKAGES
-RUN dpkg -E -G --install mapguideopensource-platformbase_${MGVER}.deb \
-    mapguideopensource-coordsys-lite_${MGVER}.deb \
-    mapguideopensource-common_${MGVER}.deb \
-    mapguideopensource-server_${MGVER}.deb \
-    mapguideopensource-webextensions_${MGVER}.deb \
-    mapguideopensource-httpd_${MGVER}.deb
+# RUN INSTALLER SCRIPT IN HEADLESS MODE
+RUN apt-get update \
+ && apt-get -y install wget \
+ && wget ${URL}/mginstallubuntu.sh \
+ && chmod +x mginstallubuntu.sh \
+ && ./mginstallubuntu.sh --headless --no-service-install --no-mgserver-start \
+ --no-tomcat-start --no-httpd-start --with-sdf --with-shp --with-sqlite --with-gdal \
+ --with-ogr --with-wfs --admin-port ${DEFAULT_ADMIN_PORT} --client-port ${DEFAULT_CLIENT_PORT} \
+ --site-port ${DEFAULT_SITE_PORT} --httpd-port ${DEFAULT_HTTPD_PORT} --server-ip ${DEFAULT_SERVER_IP} \
+ && rm -rf /var/lib/apt/lists/* \
+ && rm -rf /var/lib/apt/archives/*
 
 WORKDIR ${MG_PATH}
 
@@ -86,7 +65,6 @@ RUN ln -sf /dev/stdout ${MGLOG_PATH}/{Access,Admin,Authentication}.log; \
     ln -sf /dev/stderr ${MGLOG_PATH}/Error.log; \
     ln -sf /dev/stdout ${MGAPACHE_LOG}/{access_,mod_jk.}log; \
     ln -sf /dev/stderr ${MGAPACHE_LOG}/error_log
-
 
 COPY ./entrypoint.sh /
 RUN chmod a+x /entrypoint.sh; \
