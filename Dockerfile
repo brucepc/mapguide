@@ -47,7 +47,7 @@ RUN apt-get update \
  && chmod +x mginstallubuntu.sh \
  && ./mginstallubuntu.sh --headless --no-service-install --no-mgserver-start \
  --no-tomcat-start --no-httpd-start --with-sdf --with-shp --with-sqlite --with-gdal \
- --with-ogr --with-wfs --with-wms --admin-port ${DEFAULT_ADMIN_PORT} --client-port ${DEFAULT_CLIENT_PORT} \
+ --with-ogr --with-wfs --admin-port ${DEFAULT_ADMIN_PORT} --client-port ${DEFAULT_CLIENT_PORT} \
  --site-port ${DEFAULT_SITE_PORT} --httpd-port ${DEFAULT_HTTPD_PORT} --server-ip ${DEFAULT_SERVER_IP} \
  && rm -rf /var/lib/apt/lists/* \
  && rm -rf /var/lib/apt/archives/*
