@@ -70,7 +70,6 @@ while test $# -gt 0; do
       shift
       NO_APACHE=1
       NO_TOMCAT=1
-      exit 0
     ;;
     --no-apache)
       shift
